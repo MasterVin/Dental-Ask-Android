@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <HorizontalScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:background="#3B9FFF"
+            android:scrollbarStyle="outsideOverlay">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:divider="@android:drawable/divider_horizontal_bright"
+                android:dividerPadding="30sp"
+                android:background="#3B9FFF" />
+        </HorizontalScrollView>
+       	<LinearLayout 
+       	    android:id="@+id/Line"
+       	    android:layout_width="match_parent"
+       	    android:layout_height="4dp"
+       	    android:orientation="vertical"
+       	    android:background="@android:color/darker_gray"/>
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" >
+            
+            <Button
+                android:id="@+id/buttonQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="1dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:text="@string/publish"
+                android:textSize="15sp" />
+
+            <ImageButton 
+                android:src="@drawable/ic_menu_refresh"
+                android:id="@+id/buttonRefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="1dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:contentDescription="@string/refresh"/>
+            
+            <Button
+                android:id="@+id/buttonPicture"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@id/buttonQuestion"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:text="@string/picture"
+                android:textSize="15sp" />
+            
+            <EditText
+                android:id="@+id/writeQuestion"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@id/buttonPicture"
+                android:layout_toRightOf="@id/buttonRefresh"
+                android:hint="@string/hint_question"
+                android:inputType="text"
+                android:maxLines="2"
+                android:singleLine="true"
+                android:textSize="20sp" />
+            
+            
+            
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <ListView
+                android:id="@+id/list_implant"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </ListView>
+            
+            <ListView
+                android:id="@+id/list_endodontics"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </ListView>
+            
+            <ListView
+                android:id="@+id/list_cosmetic"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </ListView>
+            
+            <ListView
+                android:id="@+id/list_orthodontics"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </ListView>
+            
+            <ListView
+                android:id="@+id/list_periodontics"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </ListView>
+            
+            <ListView
+                android:id="@+id/list_restoration"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </ListView>
+            
+            <ListView
+                android:id="@+id/list_oral_surgery"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </ListView>
+            
+        </FrameLayout>
+    </LinearLayout>
+
+</TabHost>

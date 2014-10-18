@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <ScrollView
+        android:id="@+id/answer_space"
+        android:layout_width="fill_parent"
+        android:layout_height="150sp"
+        android:fillViewport="true"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/relative_answer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#3B9FFF" >
+
+            <TextView
+                android:id="@+id/title2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10sp"
+                android:singleLine="false"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title2"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/image"
+                android:maxHeight="420dp"
+                android:maxWidth="420dp"
+                android:scaleType="centerInside" />
+
+            <TextView
+                android:id="@+id/date2"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/image2"
+                android:layout_marginRight="10sp"
+                android:singleLine="true"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/user2"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/title2"
+                android:layout_marginRight="10sp"
+                android:layout_toLeftOf="@id/date2"
+                android:singleLine="true"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/idpregunta2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/Line2"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_below="@id/answer_space"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical" />
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/Line2" >
+
+        <Button
+            android:id="@+id/buttonAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="1dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:text="@string/publish"
+            android:textSize="15sp" />
+
+        <ImageButton
+            android:id="@+id/buttonRefresh2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="1dp"
+            android:contentDescription="@string/refresh"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:src="@drawable/ic_menu_refresh" />
+
+        <Button
+            android:id="@+id/buttonPicture2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/buttonAnswer"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:text="@string/picture"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/writeAnswer"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/buttonPicture2"
+            android:layout_toRightOf="@id/buttonRefresh2"
+            android:hint="@string/hint_answer"
+            android:inputType="text"
+            android:maxLines="2"
+            android:singleLine="true"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/FrameLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/RelativeLayout2" >
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+    </FrameLayout>
+
+</RelativeLayout>

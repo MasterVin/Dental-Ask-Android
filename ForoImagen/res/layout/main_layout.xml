@@ -1,0 +1,123 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mx.uabc.tij.citecuvp.writeaquestiongetananswer.LoginActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <!-- Login form -->
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            style="@style/LoginFormContainer"
+            android:layout_width="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout 
+                android:id="@+id/titleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="120sp">
+                
+
+                <TextView
+                    android:id="@+id/apptitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="40sp"
+                    android:gravity="center"
+                    android:text="@string/app_name2"
+                    android:textColor="#3B9FFF"
+                    android:textAppearance="@android:style/TextAppearance.Large" />
+                
+                <ImageView 
+                    android:id="@+id/tooth"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toLeftOf="@id/apptitle"
+                    android:layout_marginBottom="20sp"
+                    android:src="@drawable/tooth"
+                    android:contentDescription="@string/tooth"/>
+                
+                <ImageView 
+                    android:id="@+id/tooth2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/apptitle"
+                    android:layout_marginBottom="20sp"
+                    android:src="@drawable/tooth2"
+                    android:contentDescription="@string/tooth"/>
+                
+            </RelativeLayout>
+            
+            
+            <EditText
+                android:id="@+id/username_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/promp_username"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/password_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_password"
+                android:imeActionId="@+id/login"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+            <RelativeLayout
+                style="@style/LoginFormContainer"
+                android:orientation="vertical" >
+
+                <TextView 
+                    android:id="@+id/space"
+                    android:layout_width="15sp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp" />
+                
+                <Button
+                    android:id="@+id/register_button_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="16dp"
+                    android:layout_toLeftOf="@id/space"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    android:textSize="12sp"
+                    android:text="@string/register" />
+
+                <Button
+                    android:id="@+id/login_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@id/space"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:textSize="12sp"
+                    android:text="@string/login" />
+            </RelativeLayout>
+            
+            
+        </LinearLayout>
+    </ScrollView>
+
+</merge>
