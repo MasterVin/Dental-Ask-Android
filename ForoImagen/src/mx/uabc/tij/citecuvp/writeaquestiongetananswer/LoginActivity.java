@@ -17,7 +17,9 @@ import org.json.JSONObject;
 
 import beans.Users;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -34,6 +36,7 @@ public class LoginActivity extends Activity {
 	private Button buttonRegister;
 	private Button buttonLogin;
 	private Users user;
+	private Context context = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,8 @@ public class LoginActivity extends Activity {
 		editPassword =(EditText)findViewById(R.id.password_login);
 		buttonRegister =(Button)findViewById(R.id.register_button_login);
 		buttonLogin =(Button)findViewById(R.id.login_button);
+		
+		context=this;
 		
 		buttonRegister.setOnClickListener(new OnClickListener() {
 			
@@ -85,6 +90,25 @@ public class LoginActivity extends Activity {
 		finish();
 	}
 	
+	public void errorClose(){
+		AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        builder1.setTitle("Error");
+		builder1.setMessage("There is a problem with the server, please try again in another moment");
+        builder1.setCancelable(false);
+        builder1.setNeutralButton("Ok",
+                new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+            	finish();
+            	//dialog.cancel();
+            }
+        });
+
+        builder1.show();
+        //AlertDialog alert11 = builder1.create();
+        //alert11.show();
+		//finish();
+	}
+	
 	private class Login extends AsyncTask<Users, Void	, Integer>{
 
 		private Context context;
@@ -116,12 +140,8 @@ public class LoginActivity extends Activity {
 			try{
 				HttpResponse response=cliente.execute(petitionGet);
 				HttpEntity content=response.getEntity();
-				is=content.getContent();
-			}catch(ClientProtocolException e){
-				e.printStackTrace();
-			}catch(IOException e){
-				e.printStackTrace();
-			}
+				is=content.getContent();	
+			
 			
 			BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
 			StringBuilder sb=new StringBuilder();
@@ -162,7 +182,12 @@ public class LoginActivity extends Activity {
 			}catch(JSONException e){
 				e.printStackTrace();
 			}
-			
+			}catch(ClientProtocolException e){
+				e.printStackTrace();
+			}catch(IOException e){
+				number=3;
+				//e.printStackTrace();
+			}
 			return number;
 			// TODO Auto-generated method stub
 		}
@@ -176,6 +201,8 @@ public class LoginActivity extends Activity {
 					break;
 			case 2: Toast.makeText(context, "User confirmed", Toast.LENGTH_SHORT).show();
 					launchQuestionActivity();
+					break;
+			case 3: errorClose();
 					break;
 			}
 		}
