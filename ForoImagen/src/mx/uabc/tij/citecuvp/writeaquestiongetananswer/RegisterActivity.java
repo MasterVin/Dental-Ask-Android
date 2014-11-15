@@ -33,6 +33,7 @@ public class RegisterActivity extends Activity {
 	private EditText editName;
 	private EditText editLastName;
 	private EditText editEmail;
+	private EditText editTitles;
 	private Button registerButton;
 	
 	private Users user;
@@ -55,6 +56,7 @@ public class RegisterActivity extends Activity {
 		editName=(EditText)findViewById(R.id.name);
 		editLastName=(EditText)findViewById(R.id.lastname);
 		editEmail=(EditText)findViewById(R.id.email);
+		editTitles=(EditText)findViewById(R.id.titles);
 		registerButton=(Button)findViewById(R.id.register_button);
 		
 		registerButton.setOnClickListener(new OnClickListener() {
@@ -73,6 +75,7 @@ public class RegisterActivity extends Activity {
 							editPassword.getText().toString(),
 							editName.getText().toString(),
 							editLastName.getText().toString(),
+							editTitles.getText().toString(),
 							editEmail.getText().toString());
 					
 					UploadUser uploadUser=new UploadUser();
@@ -123,7 +126,7 @@ public class UploadUser extends AsyncTask<Users, Void, Void>{
 			user = params[0];
 			
 			HttpClient client=new DefaultHttpClient();
-			HttpPost enviopost=new HttpPost("http://10.0.2.2:80/android_connect/upload_user_pdo.php"/*http://citecuvp.tij.uabc.mx/foro/crear_usuario_server.php"*/);
+			HttpPost enviopost=new HttpPost("http://citecuvp.tij.uabc.mx/foro/upload_user_server.php");
 										//http://10.0.2.2:80/android_connect/upload_user_pdo.php
 			try{
 				List<NameValuePair> names=new ArrayList<NameValuePair>();
@@ -131,6 +134,7 @@ public class UploadUser extends AsyncTask<Users, Void, Void>{
 				names.add(new BasicNameValuePair("password", user.getPassword()));
 				names.add(new BasicNameValuePair("name", user.getName()));
 				names.add(new BasicNameValuePair("lastname", user.getLastname()));
+				names.add(new BasicNameValuePair("titles", user.getTitles()));
 				names.add(new BasicNameValuePair("email", user.getEmail()));
 				enviopost.setEntity(new UrlEncodedFormEntity(names,HTTP.UTF_8));
 				try{

@@ -34,7 +34,7 @@ public final class R {
         public static final int container=0x7f060014;
         public static final int date=0x7f060011;
         public static final int date2=0x7f060005;
-        public static final int email=0x7f060031;
+        public static final int email=0x7f060032;
         public static final int idpregunta=0x7f060013;
         public static final int idpregunta2=0x7f060007;
         public static final int image=0x7f060010;
@@ -53,13 +53,14 @@ public final class R {
         public static final int name=0x7f06002f;
         public static final int pass=0x7f06002e;
         public static final int password_login=0x7f06001b;
-        public static final int register_button=0x7f060032;
+        public static final int register_button=0x7f060033;
         public static final int register_button_login=0x7f06001e;
         public static final int relative_answer=0x7f060002;
         public static final int space=0x7f06001d;
         public static final int title=0x7f06000f;
         public static final int title2=0x7f060003;
         public static final int titleLayout=0x7f060016;
+        public static final int titles=0x7f060031;
         public static final int tooth=0x7f060018;
         public static final int tooth2=0x7f060019;
         public static final int user=0x7f060012;
@@ -77,23 +78,23 @@ public final class R {
         public static final int register_layout=0x7f030004;
     }
     public static final class string {
-        public static final int action_forgot_password=0x7f040018;
+        public static final int action_forgot_password=0x7f040019;
         public static final int action_settings=0x7f040004;
-        public static final int action_sign_in_register=0x7f040016;
-        public static final int action_sign_in_short=0x7f040017;
+        public static final int action_sign_in_register=0x7f040017;
+        public static final int action_sign_in_short=0x7f040018;
         public static final int answer=0x7f04000b;
         public static final int answers=0x7f04000c;
         public static final int app_name=0x7f040000;
         public static final int app_name2=0x7f040001;
-        public static final int error_field_required=0x7f04001d;
-        public static final int error_incorrect_password=0x7f04001c;
-        public static final int error_invalid_email=0x7f04001a;
-        public static final int error_invalid_password=0x7f04001b;
+        public static final int error_field_required=0x7f04001e;
+        public static final int error_incorrect_password=0x7f04001d;
+        public static final int error_invalid_email=0x7f04001b;
+        public static final int error_invalid_password=0x7f04001c;
         public static final int hint_answer=0x7f040008;
         public static final int hint_question=0x7f040007;
         public static final int image=0x7f04000f;
         public static final int login=0x7f040005;
-        public static final int login_progress_signing_in=0x7f040019;
+        public static final int login_progress_signing_in=0x7f04001a;
         public static final int picture=0x7f04000a;
         public static final int promp_user=0x7f040002;
         public static final int promp_username=0x7f040003;
@@ -101,6 +102,7 @@ public final class R {
         public static final int prompt_lastname=0x7f040014;
         public static final int prompt_name=0x7f040013;
         public static final int prompt_password=0x7f040015;
+        public static final int prompt_titles=0x7f040016;
         public static final int publish=0x7f040009;
         public static final int questions=0x7f04000d;
         public static final int refresh=0x7f04000e;
