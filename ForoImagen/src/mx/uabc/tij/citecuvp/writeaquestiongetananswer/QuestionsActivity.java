@@ -37,7 +37,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.provider.MediaStore.MediaColumns;
 import android.util.Base64;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -258,13 +258,14 @@ public class QuestionsActivity extends TabActivity {
 		});
 	}
 
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 
 		if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK
 				&& null != data) {
 			Uri selectedImage = data.getData();
-			String[] filePathColumn = { MediaStore.Images.Media.DATA };
+			String[] filePathColumn = { MediaColumns.DATA };
 
 			Cursor cursor = getContentResolver().query(selectedImage,
 					filePathColumn, null, null, null);
@@ -274,9 +275,9 @@ public class QuestionsActivity extends TabActivity {
 			String picturePath = cursor.getString(columnIndex);
 			cursor.close();
 
-			//Bitmap bm = scaleDownBitmap(BitmapFactory.decodeFile(picturePath), 100, 
-					//this.getApplicationContext());
-			Bitmap bm = BitmapFactory.decodeFile(picturePath);
+			Bitmap bm = scaleDownBitmap(BitmapFactory.decodeFile(picturePath), 500, 
+					this.getApplicationContext());
+			//Bitmap bm = BitmapFactory.decodeFile(picturePath);
 			
 
 			quest = new Questions(Integer.toString(actualTab),
@@ -411,7 +412,7 @@ public class QuestionsActivity extends TabActivity {
 							+ actualTab);
 
 			try {
-				HttpResponse response = (HttpResponse) cliente
+				HttpResponse response = cliente
 						.execute(peticionGet);
 				HttpEntity content = response.getEntity();
 				BufferedHttpEntity buffer = new BufferedHttpEntity(content);

@@ -17,7 +17,9 @@ import org.apache.http.protocol.HTTP;
 import beans.Users;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +39,7 @@ public class RegisterActivity extends Activity {
 	private Button registerButton;
 	
 	private Users user;
+	private Context context;
 	
 	private static final String PATTERN_EMAIL="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -50,6 +53,8 @@ public class RegisterActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register_layout);
+		
+		context=this;
 		
 		editUsername=(EditText)findViewById(R.id.username);
 		editPassword=(EditText)findViewById(R.id.pass);
@@ -101,7 +106,21 @@ public class RegisterActivity extends Activity {
 	}
 	
 	public void CloseActivity(){
-		finish();
+		//finish();
+		AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        builder1.setTitle("Registration");
+		builder1.setMessage("Thank you for joining the Dental-Ask community. We are processing your request, please try to log in later.");
+        builder1.setCancelable(false);
+        builder1.setNeutralButton("Ok",
+                new DialogInterface.OnClickListener() {
+            @Override
+			public void onClick(DialogInterface dialog, int id) {
+            	finish();
+            	//dialog.cancel();
+            }
+        });
+
+        builder1.show();
 	}
 	
 public class UploadUser extends AsyncTask<Users, Void, Void>{

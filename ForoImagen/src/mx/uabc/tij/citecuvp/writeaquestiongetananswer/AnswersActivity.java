@@ -37,7 +37,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.provider.MediaStore.MediaColumns;
 import android.util.Base64;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -200,13 +200,14 @@ public class AnswersActivity extends Activity {
 		
 	}
 	
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 
 		if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK
 				&& null != data) {
 			Uri selectedImage = data.getData();
-			String[] filePathColumn = { MediaStore.Images.Media.DATA };
+			String[] filePathColumn = { MediaColumns.DATA };
 
 			Cursor cursor = getContentResolver().query(selectedImage,
 					filePathColumn, null, null, null);
@@ -289,7 +290,7 @@ public class AnswersActivity extends Activity {
 			
 
 			try{
-				HttpResponse response=(HttpResponse)cliente.execute(peticionGet);
+				HttpResponse response=cliente.execute(peticionGet);
 				HttpEntity content=response.getEntity();
 				BufferedHttpEntity buffer = new BufferedHttpEntity(content);
 			    is = buffer.getContent();

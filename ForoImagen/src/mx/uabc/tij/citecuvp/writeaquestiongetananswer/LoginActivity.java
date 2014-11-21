@@ -97,7 +97,8 @@ public class LoginActivity extends Activity {
         builder1.setCancelable(false);
         builder1.setNeutralButton("Ok",
                 new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
+            @Override
+			public void onClick(DialogInterface dialog, int id) {
             	finish();
             	//dialog.cancel();
             }
