@@ -217,8 +217,10 @@ public class AnswersActivity extends Activity {
 			String picturePath = cursor.getString(columnIndex);
 			cursor.close();
 
-			Bitmap bm = BitmapFactory.decodeFile(picturePath);
-
+			//Bitmap bm = BitmapFactory.decodeFile(picturePath);
+			Bitmap bm = scaleDownBitmap(BitmapFactory.decodeFile(picturePath), 500, 
+					this.getApplicationContext());
+			
 			answer = new Answers(quest.getIdQuestions(),
 					user.getUsername(), bm);
 			// Convertimos al imagen a un array de bytes
@@ -229,6 +231,20 @@ public class AnswersActivity extends Activity {
 			 */
 		}
 
+	}
+	
+	public static Bitmap scaleDownBitmap(Bitmap photo, int newWidth,
+			Context context) {
+
+		final float densityMultiplier = context.getResources()
+				.getDisplayMetrics().density;
+
+		int w = (int) (newWidth * densityMultiplier);
+		int h = (int) (w * photo.getHeight() / ((double) photo.getWidth()));
+
+		photo = Bitmap.createScaledBitmap(photo, w, h, true);
+
+		return photo;
 	}
 	
 	/*public Bitmap StringToBitMap(String encodedString){
@@ -349,7 +365,9 @@ public class AnswersActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(ArrayList<Answers>result) {
-			list.setAdapter(new AdapterAnswers(this.context, result) {
+			AdapterAnswers adapter = new AdapterAnswers(this.context, result) {
+			};
+			list.setAdapter(adapter); /*{
 
 				@Override
 				public void onEntrada(Object entrada, View view) {
@@ -372,7 +390,7 @@ public class AnswersActivity extends Activity {
 						imagen.setImageBitmap(((Answers) entrada).getPhoto());
 					}
 				}
-			});
+			});*/
 		}
 
 		@Override

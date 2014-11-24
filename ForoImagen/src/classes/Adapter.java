@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import beans.Questions;
 
 public abstract class Adapter extends BaseAdapter{
@@ -49,6 +51,7 @@ public abstract class Adapter extends BaseAdapter{
 			LayoutInflater inflater=(LayoutInflater)context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			rowView=inflater.inflate(R.layout.layout_elements,null/*parent*/,true);
+			
 		}
 		onEntrada(preguntas.get(position), rowView);
 		//set data into the view
@@ -63,6 +66,7 @@ public abstract class Adapter extends BaseAdapter{
 */		// TODO Auto-generated method stub
 		return rowView;
 	}
+	
 	
 	public abstract void onEntrada (Object entrada, View view);
 

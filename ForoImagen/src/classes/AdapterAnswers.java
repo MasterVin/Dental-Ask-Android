@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import beans.Answers;
 
 
@@ -42,15 +44,47 @@ public abstract class AdapterAnswers extends BaseAdapter{
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		
-		View rowView=convertView;
+		final ViewHolder viewHolder;
+		//View rowView=convertView;
 		if(convertView==null){
 			//Create a new view into the list
 			LayoutInflater inflater=(LayoutInflater)context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			rowView=inflater.inflate(R.layout.layout_elements,null/*parent*/,true);
+			convertView=inflater.inflate(R.layout.layout_elements,parent,false);
+			viewHolder = new ViewHolder();
+			
+			viewHolder.titulo = (TextView) convertView.findViewById(R.id.title);
+
+			viewHolder.idpregunta = (TextView) convertView.findViewById(R.id.idpregunta);
+			
+
+			viewHolder.usuario = (TextView) convertView.findViewById(R.id.user);
+			
+
+			viewHolder.fecha = (TextView) convertView.findViewById(R.id.date);
+			
+				viewHolder.imagen = (ImageView) convertView.findViewById(R.id.image);
+				
+				convertView.setTag(viewHolder);
 		}
-		onEntrada(respuestas.get(position), rowView);
+		else{
+			viewHolder = (ViewHolder) convertView.getTag();
+		}
+		
+		Answers answer = this.respuestas.get(position);
+		
+		viewHolder.titulo.setText(answer.getAnswer());
+
+		viewHolder.idpregunta.setText(answer.getIdAnswers());
+		
+		viewHolder.usuario.setText(answer.getUsername());
+
+		viewHolder.fecha.setText(answer.getDate());
+		
+		if(answer.getData()!=""){
+			viewHolder.imagen.setImageBitmap(answer.getPhoto());
+		}
+		/*onEntrada(respuestas.get(position), rowView);
 		//set data into the view
 		/*textPreguntas=(TextView)rowView.findViewById(R.id.title);
 		textIdUsuario=(TextView)rowView.findViewById(R.id.user);
@@ -61,9 +95,18 @@ public abstract class AdapterAnswers extends BaseAdapter{
 		textIdUsuario.setText(pregunta.getIdUsuarios());
 		textIdPregunta.setText(pregunta.getIdPreguntas());
 */		// TODO Auto-generated method stub
-		return rowView;
+		return convertView;
 	}
 	
-	public abstract void onEntrada (Object entrada, View view);
+static class ViewHolder {
+		
+		public ImageView imagen;
+		public TextView titulo;
+		public TextView idpregunta;
+		public TextView usuario;
+		public TextView fecha;
+		}
+	
+	//public abstract void onEntrada (Object entrada, View view);
 
 }
